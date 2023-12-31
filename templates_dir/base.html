@@ -23,7 +23,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <a class="nav-link" href="{% url 'restaurant_review:index' %}">Restaurant Review</a>
+                 {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'experiential:frames_list' %}">Experiential</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a></li>
+                <li class="nav-item">
+                    <form action="{% url 'accounts:logout' %}" method="post" class="form-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link nav-link">Logout</button>
+                    </form>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'experiential:frames_list' %}">Experiential</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'restaurant_review:index' %}">Restaurant Review</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

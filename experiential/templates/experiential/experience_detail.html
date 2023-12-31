@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="aie-container">
+    <h1>{{ object.title }}</h1>
+
+    <ul class="lessons-list">
+        {% for aie in authentic_immersive_experiences %}
+            <li class="lesson-item">
+            <div class="lesson-content">
+                <a href="{% url 'experiential:authentic_immersive_experience_detail' pk=aie.pk %}">{{ aie.aie_name }}</a>
+            </div>
+            </li>
+        {% empty %}
+            <li>There are currently no authentic immersive experiences available for this experience.</li>
+        {% endfor %}
+    </ul>
+    </div>
+
+{% endblock %}

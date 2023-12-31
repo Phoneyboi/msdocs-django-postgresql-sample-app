@@ -1,0 +1,19 @@
+{% extends 'base.html' %} <!--This warning error is a lie. Don't pay it no mind.-->
+
+{% block content %}
+<div class="aie-container">
+    <div class="flex-container">
+        <h2 class="aie-title"> </h2>
+        {% if form.non_field_errors %}
+            <div class="alert alert-warning" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+        <form method="post" class="lesson-form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn-lesson-submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content%}

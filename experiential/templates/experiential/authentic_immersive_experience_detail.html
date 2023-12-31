@@ -1,0 +1,30 @@
+{% extends 'base.html' %} <!--This warning error is a lie. Don't pay it no mind.-->
+
+{% block content %}
+    <div class="aie-container">
+
+        <h1 class="aie-title">{{ object.aie_name }}</h1>
+        {% if user.is_authenticated %}
+            <div class="aie-title">
+                <a href="
+{% url 'experiential:add-lesson' frame_id=frame.id experience_id=experience.id aie_id=aie.id %}" class="btn btn-primary">Post</a>
+            </div>
+        {% endif %}
+        <h2 class="lessons-title"> </h2>
+        <ul class="lessons-list">
+            {% for lesson in lessons_learned %}
+                <li class="lesson-item">
+                    <div class="lesson-content">
+                        <p class="lesson-user"><strong>{{ lesson.user }}</strong> <strong>
+                        </strong>{{ lesson.created_at }}</p>
+                        <p class="lesson-takeaway"><strong>Takeaway:</strong> {{ lesson.takeaway }}</p>
+                        <p class="lesson-statement"><strong>Insight:</strong> {{ lesson.learning_statement }}</p>
+                        <p class="lesson-value"><strong>Value:</strong> {{ lesson.value_statement }}</p>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="no-lessons">No Takeaway, Insight, and Value have been documented for this experience.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

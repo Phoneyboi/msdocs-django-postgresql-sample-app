@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="aie-container">
+        <h1>{{ user.username }}</h1>
+        <div class="aie-title">
+            <a href="{% url 'accounts:change_password' %}" class="btn btn-primary">Change Password</a>
+        </div>
+
+        <!-- User details section -->
+
+        <!-- Lessons learned section -->
+        <h2 class="lessons-title"> </h2>
+        <ul class="lessons-list">
+            {% for lesson in user_lessons %}
+                <li class="lesson-item">
+                    <div class="lesson-content">
+                        <p class="lesson-value">{{ lesson.aie_name.experience.experiential_frame.name }} / {{ lesson.aie_name.experience.title }} / {{ lesson.aie_name }}</p>
+                        <p class="lesson-date"><strong>Date:</strong> {{ lesson.created_at }}</p>
+                        <p class="lesson-takeaway"><strong>Takeaway:</strong> {{ lesson.takeaway }}</p>
+                        <p class="lesson-statement"><strong>Insight:</strong> {{ lesson.learning_statement }}</p>
+                        <p class="lesson-value"><strong>Value:</strong> {{ lesson.value_statement }}</p>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="no-lessons">You have not documented an experience yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

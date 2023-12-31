@@ -37,6 +37,8 @@ if 'CODESPACE_NAME' in os.environ:
 
 INSTALLED_APPS = [
     'restaurant_review.apps.RestaurantReviewConfig',
+    'accounts.apps.AccountsConfig',
+    'experiential.apps.ExperientialConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

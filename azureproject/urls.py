@@ -20,5 +20,7 @@ from azureproject import views
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
     path('admin/', admin.site.urls),
-    path('restaurant_review/', include('restaurant_review.urls'))
+    path('restaurant_review/', include('restaurant_review.urls')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('experiential/', include('experiential.urls')),
 ]

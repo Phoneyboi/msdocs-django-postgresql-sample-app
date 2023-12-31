@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="aie-container">
+    <h1>{{ object.name }}</h1>
+
+    <ul class="lessons-list">
+        {% for experience in experiences %}
+            <li class="lesson-item">
+            <div class="lesson-content">
+                <strong><a href="{% url 'experiential:experience_detail' pk=experience.pk %}">{{ experience.title }}</a></strong>
+                <p>{{ experience.description }}</p>
+            </div>
+            </li>
+        {% empty %}
+            <li>There are currently no experiences available for this frame.</li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endblock %}
