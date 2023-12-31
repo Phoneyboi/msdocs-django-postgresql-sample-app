@@ -47,7 +47,7 @@ def add_restaurant(request):
         restaurant.description = description
         Restaurant.save(restaurant)
 
-        return HttpResponseRedirect(reverse('details', args=(restaurant.id,)))
+        return HttpResponseRedirect(reverse('restaurant_review:details', args=(restaurant.id,)))
 
 
 @csrf_exempt
@@ -71,4 +71,4 @@ def add_review(request, id):
         review.review_text = review_text
         Review.save(review)
 
-    return HttpResponseRedirect(reverse('details', args=(id,)))
+    return HttpResponseRedirect(reverse('restaurant_review:details', args=(id,)))
