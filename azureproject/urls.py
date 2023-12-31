@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from . import views
+from azureproject import views
 
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
     path('admin/', admin.site.urls),
-    path('restraunt_review/', include('restaurant_review.urls', namespace='restaurant_review')),
+    path('restaurant_review/', include('restaurant_review.urls'))
 ]
